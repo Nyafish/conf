@@ -1,0 +1,34 @@
+- name: block all http
+  action: block
+  log: true
+  expr: http != nil
+
+- name: block all https
+  action: block
+  log: true
+  expr: tls != nil
+
+- name: block all quic
+  action: block
+  log: true
+  expr: quic != nil
+
+- name: block shadowsocks and vmess
+  action: block
+  log: true
+  expr: fet != nil && fet.yes
+
+- name: block trojan
+  action: block
+  log: true
+  expr: trojan != nil && trojan.yes
+
+- name: block socks
+  action: block
+  log: true
+  expr: socks != nil
+
+- name: block wireguard
+  action: block
+  log: true
+  expr: wireguard != nil && wireguard.yes
