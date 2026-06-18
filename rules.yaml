@@ -1,18 +1,3 @@
-- name: block all http
-  action: block
-  log: true
-  expr: http != nil
-
-- name: block all https
-  action: block
-  log: true
-  expr: tls != nil
-
-- name: block all quic
-  action: block
-  log: true
-  expr: quic != nil
-
 - name: block shadowsocks and vmess
   action: block
   log: true
