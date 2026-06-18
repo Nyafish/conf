@@ -1,0 +1,22 @@
+io:
+  queueSize: 2048          # 默认 1024 → 适当翻倍，应对高 PPS
+  queueNum: 100
+  table: opengfw
+  connMarkAccept: 1001
+  connMarkDrop: 1002
+  rcvBuf: 4194304          # 保持 4MB，已够用
+  sndBuf: 4194304
+  local: true              # 根据实际拓扑，旁路网关模式改 false
+  rst: false               # 2核务必关闭，省 CPU
+
+workers:
+  count: 2                 # 与核心数一致（关键），4 在此配置下反而增加调度开销
+  queueSize: 64
+  tcpMaxBufferedPagesTotal: 32768   # 从 65536 降到 32768（256MB→128MB），给系统和 nftables 留内存
+  tcpMaxBufferedPagesPerConn: 16
+  tcpTimeout: 10m
+  udpMaxStreams: 4096
+
+# ruleset:  按需配置
+replay:
+  realtime: false
