@@ -17,3 +17,8 @@
   action: block
   log: true
   expr: wireguard != nil && wireguard.yes
+  
+- name: block quic
+  action: block
+  log: true
+  expr: quic != nil
